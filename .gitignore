@@ -1,0 +1,4 @@
+todoapp/migrations
+.idea/
+Pipfile
+Pipfile.lock

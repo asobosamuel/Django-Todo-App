@@ -1,0 +1,42 @@
+{% extends "main.html" %}
+{% block content %}
+<br>
+    <div class="container">
+        <h2>Completed</h2>
+    </div>
+  <div class="container text-center">
+    <br>
+    <br>
+    <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Due-date</th>
+      <th scope="col">Completed</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for todo in todos %}
+      <tr>
+      <th scope="row">{{todo.title}}</th>
+      <td>{{todo.due_date}}</td>
+      <td>
+          <a href="{% url 'toggle-complete' todo.id %}">
+            <input type="checkbox" {% if todo.completed %}checked{% endif %} disabled>
+          </a>     
+      </td>
+
+      <td>
+        <a href="{% url 'detail' todo.id %}" class="btn btn-primary btn-sm">View</a>
+        <a href="{% url 'edit-todo' todo.id %}" class="btn btn-primary btn-sm">Edit</a>
+        <a href="{% url 'delete-todo' todo.id %}" class="btn btn-primary btn-sm">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+    
+  </tbody>
+</table>
+  </div>
+  <br><br><br><br>
+{% endblock content %}

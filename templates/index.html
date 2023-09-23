@@ -1,0 +1,28 @@
+{% extends "main.html" %}
+{% load static %}
+{% block content %}
+  <div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-start g-5 py-5">
+      <div class="col-10 col-sm-8 col-lg-6">
+        <img src="{% static 'images/todo.png' %}" class="d-block mx-lg-auto img-fluid" alt="Todo 2d illustration" width="700" height="500" loading="lazy">
+      </div>
+      {% if user.is_authenticated %}
+        <div class="col-lg-6">
+        <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Welcome {{user.full_name}}</h1>
+        <p class="lead">You have {{task_count}} task{{task_count|pluralize}} left to do today.</p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+          <a href="{% url 'view-todos' %}" class="btn btn-primary btn-lg px-4 me-md-2">View Task</a>
+        </div>
+      </div>
+      {% else %}
+        <div class="col-lg-6">
+        <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Get started today and take control of your time!</h1>
+        <p class="lead">Task Tracker is a simple and easy-to-use app that helps you stay organized and on top of your tasks. With Task Tracker, you can: Increase your productivity,Improve your time management and Stay organized.</p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+          <a href="{% url 'register' %}" class="btn btn-primary btn-lg px-4 me-md-2">Get Started!</a>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+{% endblock content %}

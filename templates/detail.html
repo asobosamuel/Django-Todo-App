@@ -1,0 +1,17 @@
+{% extends "main.html" %}
+{% block content %}
+<br>
+  <div class="container">
+    <h2>{{todo.title}}</h2>
+    <p>{{todo.description}}</p>
+    <p>Due date: {{todo.due_date}}</p>
+    <p>{% if todo.completed %}
+      Status: Completed
+      {% else %}
+      Status: Not Completed
+    {% endif %}</p>
+    <a href="{% url 'edit-todo' todo.id %}" class="btn btn-primary">Edit</a>
+        <a href="{% url 'delete-todo' todo.id %}" class="btn btn-primary">Delete</a>
+  </div>
+  <br><br><br><br>
+{% endblock content %}
